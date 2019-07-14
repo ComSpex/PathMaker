@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="SilverlightOne.ButtonContentOne"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" 
+						 d:DesignWidth="18" d:DesignHeight="24">
+    
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+		<Path x:Name="core" Stroke="Black" Fill="Beige" StrokeThickness="1" Data="M0,0 14,10 0,20 0,0"
+					RenderTransformOrigin="0 0">
+			<Path.Effect>
+				<DropShadowEffect BlurRadius="4" Direction="315" ShadowDepth="2" />
+			</Path.Effect>
+			<Path.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform x:Name="LorR" />
+					<TranslateTransform x:Name="mover" />
+				</TransformGroup>
+			</Path.RenderTransform>
+		</Path>
+	</Grid>
+</UserControl>

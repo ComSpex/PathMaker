@@ -1,0 +1,157 @@
+﻿<navigation:Page x:Class="SilverlightOne.ColorfulPageOne" 
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+					 xmlns:this="clr-namespace:SilverlightOne"
+           mc:Ignorable="d"
+           xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+           d:DesignWidth="640" d:DesignHeight="457"
+           Title="ColorfulPageOne" SizeChanged="Page_SizeChanged" KeyDown="Page_KeyDown">
+	<Grid x:Name="LayoutBase" Loaded="LayoutBase_Loaded">
+		<Grid.RowDefinitions>
+			<RowDefinition x:Name="layoutBaseUpper" />
+			<RowDefinition x:Name="layoutBaseLower" Height="70" />
+		</Grid.RowDefinitions>
+		<Grid x:Name="LayoutRoot" ShowGridLines="False" Margin="10" Loaded="LayoutRoot_Loaded" Grid.Row="0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+			</Grid.RowDefinitions>
+			<Grid.Resources>
+				<Style TargetType="Rectangle">
+					<Setter Property="StrokeThickness" Value="10" />
+				</Style>
+				<LinearGradientBrush x:Key="ligraAB">
+					<GradientStop Color="{Binding ElementName=A,Path=SelectedItem.Name}" Offset="0.0" />
+					<GradientStop Color="{Binding ElementName=B,Path=SelectedItem.Name}" Offset="1.0" />
+				</LinearGradientBrush>
+				<LinearGradientBrush x:Key="ligraAC">
+					<GradientStop Color="{Binding ElementName=A,Path=SelectedItem.Name}" Offset="0.0" />
+					<GradientStop Color="{Binding ElementName=C,Path=SelectedItem.Name}" Offset="1.0" />
+				</LinearGradientBrush>
+				<LinearGradientBrush x:Key="ligraAD">
+					<GradientStop Color="{Binding ElementName=A,Path=SelectedItem.Name}" Offset="0.0" />
+					<GradientStop Color="{Binding ElementName=D,Path=SelectedItem.Name}" Offset="1.0" />
+				</LinearGradientBrush>
+				<LinearGradientBrush x:Key="ligraBC">
+					<GradientStop Color="{Binding ElementName=B,Path=SelectedItem.Name}" Offset="0.0" />
+					<GradientStop Color="{Binding ElementName=C,Path=SelectedItem.Name}" Offset="1.0" />
+				</LinearGradientBrush>
+				<LinearGradientBrush x:Key="ligraBD">
+					<GradientStop Color="{Binding ElementName=B,Path=SelectedItem.Name}" Offset="0.0" />
+					<GradientStop Color="{Binding ElementName=D,Path=SelectedItem.Name}" Offset="1.0" />
+				</LinearGradientBrush>
+				<LinearGradientBrush x:Key="ligraBA">
+					<GradientStop Color="{Binding ElementName=B,Path=SelectedItem.Name}" Offset="0.0" />
+					<GradientStop Color="{Binding ElementName=A,Path=SelectedItem.Name}" Offset="1.0" />
+				</LinearGradientBrush>
+				<LinearGradientBrush x:Key="ligraCD">
+					<GradientStop Color="{Binding ElementName=C,Path=SelectedItem.Name}" Offset="0.0" />
+					<GradientStop Color="{Binding ElementName=D,Path=SelectedItem.Name}" Offset="1.0" />
+				</LinearGradientBrush>
+				<LinearGradientBrush x:Key="ligraCA">
+					<GradientStop Color="{Binding ElementName=C,Path=SelectedItem.Name}" Offset="0.0" />
+					<GradientStop Color="{Binding ElementName=A,Path=SelectedItem.Name}" Offset="1.0" />
+				</LinearGradientBrush>
+				<LinearGradientBrush x:Key="ligraCB">
+					<GradientStop Color="{Binding ElementName=C,Path=SelectedItem.Name}" Offset="0.0" />
+					<GradientStop Color="{Binding ElementName=B,Path=SelectedItem.Name}" Offset="1.0" />
+				</LinearGradientBrush>
+				<LinearGradientBrush x:Key="ligraDA">
+					<GradientStop Color="{Binding ElementName=D,Path=SelectedItem.Name}" Offset="0.0" />
+					<GradientStop Color="{Binding ElementName=A,Path=SelectedItem.Name}" Offset="1.0" />
+				</LinearGradientBrush>
+				<LinearGradientBrush x:Key="ligraDB">
+					<GradientStop Color="{Binding ElementName=D,Path=SelectedItem.Name}" Offset="0.0" />
+					<GradientStop Color="{Binding ElementName=B,Path=SelectedItem.Name}" Offset="1.0" />
+				</LinearGradientBrush>
+				<LinearGradientBrush x:Key="ligraDC">
+					<GradientStop Color="{Binding ElementName=D,Path=SelectedItem.Name}" Offset="0.0" />
+					<GradientStop Color="{Binding ElementName=C,Path=SelectedItem.Name}" Offset="1.0" />
+				</LinearGradientBrush>
+				<RadialGradientBrush x:Key="ragraABCD">
+					<GradientStop Color="{Binding ElementName=A,Path=SelectedItem.Name}" Offset="0.0" />
+					<GradientStop Color="{Binding ElementName=B,Path=SelectedItem.Name}" Offset="0.25" />
+					<GradientStop Color="{Binding ElementName=C,Path=SelectedItem.Name}" Offset="0.75" />
+					<GradientStop Color="{Binding ElementName=D,Path=SelectedItem.Name}" Offset="1.0" />
+				</RadialGradientBrush>
+				<RadialGradientBrush x:Key="ragraAB">
+					<GradientStop Color="{Binding ElementName=A,Path=SelectedItem.Name}" Offset="0.0" />
+					<GradientStop Color="{Binding ElementName=B,Path=SelectedItem.Name}" Offset="1.0" />
+				</RadialGradientBrush>
+				<RadialGradientBrush x:Key="ragraBC">
+					<GradientStop Color="{Binding ElementName=B,Path=SelectedItem.Name}" Offset="0.0" />
+					<GradientStop Color="{Binding ElementName=C,Path=SelectedItem.Name}" Offset="1.0" />
+				</RadialGradientBrush>
+				<RadialGradientBrush x:Key="ragraBD">
+					<GradientStop Color="{Binding ElementName=B,Path=SelectedItem.Name}" Offset="0.0" />
+					<GradientStop Color="{Binding ElementName=D,Path=SelectedItem.Name}" Offset="1.0" />
+				</RadialGradientBrush>
+				<RadialGradientBrush x:Key="ragraCA">
+					<GradientStop Color="{Binding ElementName=C,Path=SelectedItem.Name}" Offset="0.0" />
+					<GradientStop Color="{Binding ElementName=A,Path=SelectedItem.Name}" Offset="1.0" />
+				</RadialGradientBrush>
+				<RadialGradientBrush x:Key="ragraCD">
+					<GradientStop Color="{Binding ElementName=C,Path=SelectedItem.Name}" Offset="0.0" />
+					<GradientStop Color="{Binding ElementName=D,Path=SelectedItem.Name}" Offset="1.0" />
+				</RadialGradientBrush>
+				<RadialGradientBrush x:Key="ragraDA">
+					<GradientStop Color="{Binding ElementName=D,Path=SelectedItem.Name}" Offset="0.0" />
+					<GradientStop Color="{Binding ElementName=A,Path=SelectedItem.Name}" Offset="1.0" />
+				</RadialGradientBrush>
+			</Grid.Resources>
+			<Rectangle Grid.Column="1" Grid.Row="0" Stroke="{StaticResource ligraAD}" Fill="{StaticResource ligraBC}" Grid.ColumnSpan="2" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown"/>
+			<Rectangle Grid.Column="3" Grid.Row="0" Stroke="{StaticResource ligraBD}" Fill="{StaticResource ragraCA}" Grid.RowSpan="2" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown"/>
+			<Rectangle Grid.Column="4" Grid.Row="0" Stroke="{Binding ElementName=A,Path=SelectedItem.Brush}" Fill="{StaticResource ragraABCD}" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown" />
+			<Rectangle Grid.Column="1" Grid.Row="1" Stroke="{Binding ElementName=D,Path=SelectedItem.Brush}" Fill="{Binding ElementName=C,Path=SelectedItem.Brush}" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown" />
+			<Rectangle Grid.Column="0" Grid.Row="2" Stroke="{StaticResource ligraCD}" Fill="{StaticResource ragraAB}" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown" />
+			<Rectangle Grid.Column="2" Grid.Row="2" Stroke="{StaticResource ligraBC}" Fill="{StaticResource ligraDA}" Grid.ColumnSpan="2" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown"/>
+			<this:ColorsListbox Grid.Column="0" Grid.Row="0" x:Name="A" Grid.RowSpan="2" />
+			<this:ColorsListbox Grid.Column="2" Grid.Row="1" x:Name="B" />
+			<this:ColorsListbox Grid.Column="4" Grid.Row="1" x:Name="C" Grid.RowSpan="2" />
+			<this:ColorsListbox Grid.Column="1" Grid.Row="2" x:Name="D" />
+		</Grid>
+		<TextBlock x:Name="info" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"
+							 FontSize="72" Foreground="Black" RenderTransformOrigin="0.5 0.5" Visibility="Collapsed"
+							 Grid.Row="0" Grid.RowSpan="2">
+			<TextBlock.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform x:Name="infoScale" />
+					<TranslateTransform x:Name="infoTrans" />
+				</TransformGroup>
+			</TextBlock.RenderTransform>
+		</TextBlock>
+
+		<Grid x:Name="LRmenu" Height="60" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10 0 10 0"
+					Visibility="Visible" RenderTransformOrigin="0 1.0" Background="#ff222222" 
+					MouseLeftButtonDown="Rectangle_MouseLeftButtonDown" IsHitTestVisible="True" Grid.Row="1">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="60" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="60" />
+			</Grid.ColumnDefinitions>
+			<Button x:Name="goL" Grid.Column="0" Click="goL_Click" Cursor="Hand">
+				<this:ButtonContentOne IsRight="False" />
+			</Button>
+			<Button x:Name="goR" Grid.Column="2" Click="goR_Click" Cursor="Hand">
+				<this:ButtonContentOne IsRight="True" />
+			</Button>
+			<this:Logo HorizontalAlignment="Center" VerticalAlignment="Center" Margin="35,-30,-525,-92" Width="1050" Height="182" Grid.Column="1" Grid.ColumnSpan="2">
+				<this:Logo.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform ScaleX="0.5" ScaleY="0.5" />
+					</TransformGroup>
+				</this:Logo.RenderTransform>
+			</this:Logo>
+		</Grid>
+	</Grid>
+</navigation:Page>

@@ -1,0 +1,254 @@
+﻿<Window x:Class="PathMaker.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ComSpex="clr-namespace:ComSpex;assembly=OutlinedText"
+        xmlns:cp="clr-namespace:Petzold.ListNamedBrushes"
+    Title="Path Maker" Height="275" Width="681">
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="Foreground" Value="RoyalBlue" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <StackPanel>
+            <TextBox x:Name="targetText" Text="ComSpex" FontSize="20" />
+            <WrapPanel Orientation="Horizontal">
+				<WrapPanel.Triggers>
+					<EventTrigger  RoutedEvent="Grid.Loaded">
+						<BeginStoryboard>
+							<Storyboard>
+								<DoubleAnimation Storyboard.TargetName="fontFamily" Storyboard.TargetProperty="Angle" BeginTime="0:0:2"
+																 To="360.0" Duration="0:0:1.5" AutoReverse="True" />
+							</Storyboard>
+						</BeginStoryboard>
+					</EventTrigger>
+				</WrapPanel.Triggers>
+					<Label Content="FontSize" Target="{Binding ElementName=targetFontSize}" />
+                <TextBox x:Name="targetFontSize" Text="80" />
+					<Label Content="FontFamily" Target="{Binding ElementName=targetFontFamily}"
+								 Cursor="Hand" MouseDown="Label_MouseDown"
+								 RenderTransformOrigin="0.5 0.5" ToolTip="This is clickable.">
+					<Label.Triggers>
+						<EventTrigger RoutedEvent="Label.MouseEnter">
+							<BeginStoryboard>
+								<Storyboard>
+									<DoubleAnimation Storyboard.TargetName="fontFamily" Storyboard.TargetProperty="Angle"
+																	 To="360.0" Duration="0:0:1.5" IsCumulative="True" />
+								</Storyboard>
+							</BeginStoryboard>
+						</EventTrigger>
+						<EventTrigger RoutedEvent="Label.MouseLeave">
+							<BeginStoryboard>
+								<Storyboard>
+									<DoubleAnimation Storyboard.TargetName="fontFamily" Storyboard.TargetProperty="Angle"
+																	 To="0.0" Duration="0:0:1.5" IsCumulative="True"  />
+								</Storyboard>
+							</BeginStoryboard>
+						</EventTrigger>
+					</Label.Triggers>
+						<Label.RenderTransform>
+							<RotateTransform x:Name="fontFamily" />
+						</Label.RenderTransform>
+					</Label>
+				<TextBox x:Name="targetFontFamily" Text="Maiandra GD" />
+                <Label Content="FontWeight" Target="{Binding ElementName=targetFontWeight}" />
+                <TextBox x:Name="targetFontWeight" Text="Bold" />
+                <Label Content="FontStyle" Target="{Binding ElementName=targetFontStyle}" />
+                <TextBox x:Name="targetFontStyle" Text="Italic" />
+                <Label Content="Stroke" Target="{Binding ElementName=targetStroke}" />
+                <TextBox x:Name="targetStroke" Text="Red" />
+                <Label Content="Thickness" Target="{Binding ElementName=targetThickness}" />
+                <TextBox x:Name="targetThickness" Text="2" />
+                <Label Content="Fill" Target="{Binding ElementName=targetFill}" />
+                <TextBox x:Name="targetFill" Text="Blue" />
+            </WrapPanel>
+            <Border x:Name="frame" Margin="5" CornerRadius="10" 
+                    Background="{Binding ElementName=frameBackground,Path=SelectedItem.Brush}">
+            <ComSpex:OutlinedText FontSize="{Binding ElementName=targetFontSize,Path=Text}" 
+                                  Text="{Binding ElementName=targetText, Path=Text}" 
+                                  FontFamily="{Binding ElementName=targetFontFamily,Path=Text}" 
+                                  Stroke="{Binding ElementName=targetStroke,Path=Text}"
+                                  StrokeThickness="{Binding ElementName=targetThickness,Path=Text}"
+                                  Fill="{Binding ElementName=targetFill,Path=Text}"
+                                  FontWeight="{Binding ElementName=targetFontWeight,Path=Text}"
+                                  FontStyle="{Binding ElementName=targetFontStyle,Path=Text}" 
+                                  Margin="10"
+                                  x:Name="textRequested"/>
+            </Border>
+        </StackPanel>
+        <DockPanel VerticalAlignment="Bottom">
+            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="DockPanel.Dock" Value="Bottom" />
+                        <Setter Property="VerticalAlignment" Value="Center" />
+                        <Setter Property="HorizontalAlignment" Value="Right" />
+                    </Style>
+                </StackPanel.Resources>
+                <Border>
+                    <StackPanel Margin="2">
+                        <Label Content="Background" />
+                        <ComboBox x:Name="frameBackground" SelectedValuePath="Brush" Width="270" FontFamily="Courier New">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate DataType="{x:Type cp:NamedBrush}" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Rectangle Width="16" Height="16" Margin="2,2,2,2" Stroke="#FF000000" Fill="{Binding Path=Brush}" />
+                                    <TextBlock VerticalAlignment="Center" Text="{Binding Path=BrushName}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                        <cp:NamedBrush Brush="#FFF0F8FF" BrushName="#F0F8FF Alice Blue" />
+                        <cp:NamedBrush Brush="#FFFAEBD7" BrushName="#FAEBD7 Antique White" />
+                        <cp:NamedBrush Brush="#FF00FFFF" BrushName="#00FFFF Aqua" />
+                        <cp:NamedBrush Brush="#FF7FFFD4" BrushName="#7FFFD4 Aquamarine" />
+                        <cp:NamedBrush Brush="#FFF0FFFF" BrushName="#F0FFFF Azure" />
+                        <cp:NamedBrush Brush="#FFF5F5DC" BrushName="#F5F5DC Beige" />
+                        <cp:NamedBrush Brush="#FFFFE4C4" BrushName="#FFE4C4 Bisque" />
+                        <cp:NamedBrush Brush="#FF000000" BrushName="#000000 Black" />
+                        <cp:NamedBrush Brush="#FFFFEBCD" BrushName="#FFEBCD Blanched Almond" />
+                        <cp:NamedBrush Brush="#FF0000FF" BrushName="#0000FF Blue" />
+                        <cp:NamedBrush Brush="#FF8A2BE2" BrushName="#8A2BE2 Blue Violet" />
+                        <cp:NamedBrush Brush="#FFA52A2A" BrushName="#A52A2A Brown" />
+                        <cp:NamedBrush Brush="#FFDEB887" BrushName="#DEB887 Burly Wood" />
+                        <cp:NamedBrush Brush="#FF5F9EA0" BrushName="#5F9EA0 Cadet Blue" />
+                        <cp:NamedBrush Brush="#FF7FFF00" BrushName="#7FFF00 Chartreuse" />
+                        <cp:NamedBrush Brush="#FFD2691E" BrushName="#D2691E Chocolate" />
+                        <cp:NamedBrush Brush="#FFFF7F50" BrushName="#FF7F50 Coral" />
+                        <cp:NamedBrush Brush="#FF6495ED" BrushName="#6495ED Cornflower Blue" />
+                        <cp:NamedBrush Brush="#FFFFF8DC" BrushName="#FFF8DC Cornsilk" />
+                        <cp:NamedBrush Brush="#FFDC143C" BrushName="#DC143C Crimson" />
+                        <cp:NamedBrush Brush="#FF00FFFF" BrushName="#00FFFF Cyan" />
+                        <cp:NamedBrush Brush="#FF00008B" BrushName="#00008B Dark Blue" />
+                        <cp:NamedBrush Brush="#FF008B8B" BrushName="#008B8B Dark Cyan" />
+                        <cp:NamedBrush Brush="#FFB8860B" BrushName="#B8860B Dark Goldenrod" />
+                        <cp:NamedBrush Brush="#FFA9A9A9" BrushName="#A9A9A9 Dark Gray" />
+                        <cp:NamedBrush Brush="#FF006400" BrushName="#006400 Dark Green" />
+                        <cp:NamedBrush Brush="#FFBDB76B" BrushName="#BDB76B Dark Khaki" />
+                        <cp:NamedBrush Brush="#FF8B008B" BrushName="#8B008B Dark Magenta" />
+                        <cp:NamedBrush Brush="#FF556B2F" BrushName="#556B2F Dark Olive Green" />
+                        <cp:NamedBrush Brush="#FFFF8C00" BrushName="#FF8C00 Dark Orange" />
+                        <cp:NamedBrush Brush="#FF9932CC" BrushName="#9932CC Dark Orchid" />
+                        <cp:NamedBrush Brush="#FF8B0000" BrushName="#8B0000 Dark Red" />
+                        <cp:NamedBrush Brush="#FFE9967A" BrushName="#E9967A Dark Salmon" />
+                        <cp:NamedBrush Brush="#FF8FBC8F" BrushName="#8FBC8F Dark Sea Green" />
+                        <cp:NamedBrush Brush="#FF483D8B" BrushName="#483D8B Dark Slate Blue" />
+                        <cp:NamedBrush Brush="#FF2F4F4F" BrushName="#2F4F4F Dark Slate Gray" />
+                        <cp:NamedBrush Brush="#FF00CED1" BrushName="#00CED1 Dark Turquoise" />
+                        <cp:NamedBrush Brush="#FF9400D3" BrushName="#9400D3 Dark Violet" />
+                        <cp:NamedBrush Brush="#FFFF1493" BrushName="#FF1493 Deep Pink" />
+                        <cp:NamedBrush Brush="#FF00BFFF" BrushName="#00BFFF Deep Sky Blue" />
+                        <cp:NamedBrush Brush="#FF696969" BrushName="#696969 Dim Gray" />
+                        <cp:NamedBrush Brush="#FF1E90FF" BrushName="#1E90FF Dodger Blue" />
+                        <cp:NamedBrush Brush="#FFB22222" BrushName="#B22222 Firebrick" />
+                        <cp:NamedBrush Brush="#FFFFFAF0" BrushName="#FFFAF0 Floral White" />
+                        <cp:NamedBrush Brush="#FF228B22" BrushName="#228B22 Forest Green" />
+                        <cp:NamedBrush Brush="#FFFF00FF" BrushName="#FF00FF Fuchsia" />
+                        <cp:NamedBrush Brush="#FFDCDCDC" BrushName="#DCDCDC Gainsboro" />
+                        <cp:NamedBrush Brush="#FFF8F8FF" BrushName="#F8F8FF Ghost White" />
+                        <cp:NamedBrush Brush="#FFFFD700" BrushName="#FFD700 Gold" />
+                        <cp:NamedBrush Brush="#FFDAA520" BrushName="#DAA520 Goldenrod" />
+                        <cp:NamedBrush Brush="#FF808080" BrushName="#808080 Gray" />
+                        <cp:NamedBrush Brush="#FF008000" BrushName="#008000 Green" />
+                        <cp:NamedBrush Brush="#FFADFF2F" BrushName="#ADFF2F Green Yellow" />
+                        <cp:NamedBrush Brush="#FFF0FFF0" BrushName="#F0FFF0 Honeydew" />
+                        <cp:NamedBrush Brush="#FFFF69B4" BrushName="#FF69B4 Hot Pink" />
+                        <cp:NamedBrush Brush="#FFCD5C5C" BrushName="#CD5C5C Indian Red" />
+                        <cp:NamedBrush Brush="#FF4B0082" BrushName="#4B0082 Indigo" />
+                        <cp:NamedBrush Brush="#FFFFFFF0" BrushName="#FFFFF0 Ivory" />
+                        <cp:NamedBrush Brush="#FFF0E68C" BrushName="#F0E68C Khaki" />
+                        <cp:NamedBrush Brush="#FFE6E6FA" BrushName="#E6E6FA Lavender" />
+                        <cp:NamedBrush Brush="#FFFFF0F5" BrushName="#FFF0F5 Lavender Blush" />
+                        <cp:NamedBrush Brush="#FF7CFC00" BrushName="#7CFC00 Lawn Green" />
+                        <cp:NamedBrush Brush="#FFFFFACD" BrushName="#FFFACD Lemon Chiffon" />
+                        <cp:NamedBrush Brush="#FFADD8E6" BrushName="#ADD8E6 Light Blue" />
+                        <cp:NamedBrush Brush="#FFF08080" BrushName="#F08080 Light Coral" />
+                        <cp:NamedBrush Brush="#FFE0FFFF" BrushName="#E0FFFF Light Cyan" />
+                        <cp:NamedBrush Brush="#FFFAFAD2" BrushName="#FAFAD2 Light Goldenrod Yellow" />
+                        <cp:NamedBrush Brush="#FFD3D3D3" BrushName="#D3D3D3 Light Gray" />
+                        <cp:NamedBrush Brush="#FF90EE90" BrushName="#90EE90 Light Green" />
+                        <cp:NamedBrush Brush="#FFFFB6C1" BrushName="#FFB6C1 Light Pink" />
+                        <cp:NamedBrush Brush="#FFFFA07A" BrushName="#FFA07A Light Salmon" />
+                        <cp:NamedBrush Brush="#FF20B2AA" BrushName="#20B2AA Light Sea Green" />
+                        <cp:NamedBrush Brush="#FF87CEFA" BrushName="#87CEFA Light Sky Blue" />
+                        <cp:NamedBrush Brush="#FF778899" BrushName="#778899 Light Slate Gray" />
+                        <cp:NamedBrush Brush="#FFB0C4DE" BrushName="#B0C4DE Light Steel Blue" />
+                        <cp:NamedBrush Brush="#FFFFFFE0" BrushName="#FFFFE0 Light Yellow" />
+                        <cp:NamedBrush Brush="#FF00FF00" BrushName="#00FF00 Lime" />
+                        <cp:NamedBrush Brush="#FF32CD32" BrushName="#32CD32 Lime Green" />
+                        <cp:NamedBrush Brush="#FFFAF0E6" BrushName="#FAF0E6 Linen" />
+                        <cp:NamedBrush Brush="#FFFF00FF" BrushName="#FF00FF Magenta" />
+                        <cp:NamedBrush Brush="#FF800000" BrushName="#800000 Maroon" />
+                        <cp:NamedBrush Brush="#FF66CDAA" BrushName="#66CDAA Medium Aquamarine" />
+                        <cp:NamedBrush Brush="#FF0000CD" BrushName="#0000CD Medium Blue" />
+                        <cp:NamedBrush Brush="#FFBA55D3" BrushName="#BA55D3 Medium Orchid" />
+                        <cp:NamedBrush Brush="#FF9370DB" BrushName="#9370DB Medium Purple" />
+                        <cp:NamedBrush Brush="#FF3CB371" BrushName="#3CB371 Medium Sea Green" />
+                        <cp:NamedBrush Brush="#FF7B68EE" BrushName="#7B68EE Medium Slate Blue" />
+                        <cp:NamedBrush Brush="#FF00FA9A" BrushName="#00FA9A Medium Spring Green" />
+                        <cp:NamedBrush Brush="#FF48D1CC" BrushName="#48D1CC Medium Turquoise" />
+                        <cp:NamedBrush Brush="#FFC71585" BrushName="#C71585 Medium Violet Red" />
+                        <cp:NamedBrush Brush="#FF191970" BrushName="#191970 Midnight Blue" />
+                        <cp:NamedBrush Brush="#FFF5FFFA" BrushName="#F5FFFA Mint Cream" />
+                        <cp:NamedBrush Brush="#FFFFE4E1" BrushName="#FFE4E1 Misty Rose" />
+                        <cp:NamedBrush Brush="#FFFFE4B5" BrushName="#FFE4B5 Moccasin" />
+                        <cp:NamedBrush Brush="#FFFFDEAD" BrushName="#FFDEAD Navajo White" />
+                        <cp:NamedBrush Brush="#FF000080" BrushName="#000080 Navy" />
+                        <cp:NamedBrush Brush="#FFFDF5E6" BrushName="#FDF5E6 Old Lace" />
+                        <cp:NamedBrush Brush="#FF808000" BrushName="#808000 Olive" />
+                        <cp:NamedBrush Brush="#FF6B8E23" BrushName="#6B8E23 Olive Drab" />
+                        <cp:NamedBrush Brush="#FFFFA500" BrushName="#FFA500 Orange" />
+                        <cp:NamedBrush Brush="#FFFF4500" BrushName="#FF4500 Orange Red" />
+                        <cp:NamedBrush Brush="#FFDA70D6" BrushName="#DA70D6 Orchid" />
+                        <cp:NamedBrush Brush="#FFEEE8AA" BrushName="#EEE8AA Pale Goldenrod" />
+                        <cp:NamedBrush Brush="#FF98FB98" BrushName="#98FB98 Pale Green" />
+                        <cp:NamedBrush Brush="#FFAFEEEE" BrushName="#AFEEEE Pale Turquoise" />
+                        <cp:NamedBrush Brush="#FFDB7093" BrushName="#DB7093 Pale Violet Red" />
+                        <cp:NamedBrush Brush="#FFFFEFD5" BrushName="#FFEFD5 Papaya Whip" />
+                        <cp:NamedBrush Brush="#FFFFDAB9" BrushName="#FFDAB9 Peach Puff" />
+                        <cp:NamedBrush Brush="#FFCD853F" BrushName="#CD853F Peru" />
+                        <cp:NamedBrush Brush="#FFFFC0CB" BrushName="#FFC0CB Pink" />
+                        <cp:NamedBrush Brush="#FFDDA0DD" BrushName="#DDA0DD Plum" />
+                        <cp:NamedBrush Brush="#FFB0E0E6" BrushName="#B0E0E6 Powder Blue" />
+                        <cp:NamedBrush Brush="#FF800080" BrushName="#800080 Purple" />
+                        <cp:NamedBrush Brush="#FFFF0000" BrushName="#FF0000 Red" />
+                        <cp:NamedBrush Brush="#FFBC8F8F" BrushName="#BC8F8F Rosy Brown" />
+                        <cp:NamedBrush Brush="#FF4169E1" BrushName="#4169E1 Royal Blue" />
+                        <cp:NamedBrush Brush="#FF8B4513" BrushName="#8B4513 Saddle Brown" />
+                        <cp:NamedBrush Brush="#FFFA8072" BrushName="#FA8072 Salmon" />
+                        <cp:NamedBrush Brush="#FFF4A460" BrushName="#F4A460 Sandy Brown" />
+                        <cp:NamedBrush Brush="#FF2E8B57" BrushName="#2E8B57 Sea Green" />
+                        <cp:NamedBrush Brush="#FFFFF5EE" BrushName="#FFF5EE Sea Shell" />
+                        <cp:NamedBrush Brush="#FFA0522D" BrushName="#A0522D Sienna" />
+                        <cp:NamedBrush Brush="#FFC0C0C0" BrushName="#C0C0C0 Silver" />
+                        <cp:NamedBrush Brush="#FF87CEEB" BrushName="#87CEEB Sky Blue" />
+                        <cp:NamedBrush Brush="#FF6A5ACD" BrushName="#6A5ACD Slate Blue" />
+                        <cp:NamedBrush Brush="#FF708090" BrushName="#708090 Slate Gray" />
+                        <cp:NamedBrush Brush="#FFFFFAFA" BrushName="#FFFAFA Snow" />
+                        <cp:NamedBrush Brush="#FF00FF7F" BrushName="#00FF7F Spring Green" />
+                        <cp:NamedBrush Brush="#FF4682B4" BrushName="#4682B4 Steel Blue" />
+                        <cp:NamedBrush Brush="#FFD2B48C" BrushName="#D2B48C Tan" />
+                        <cp:NamedBrush Brush="#FF008080" BrushName="#008080 Teal" />
+                        <cp:NamedBrush Brush="#FFD8BFD8" BrushName="#D8BFD8 Thistle" />
+                        <cp:NamedBrush Brush="#FFFF6347" BrushName="#FF6347 Tomato" />
+                        <cp:NamedBrush Brush="#00FFFFFF" BrushName="#FFFFFF Transparent" />
+                        <cp:NamedBrush Brush="#FF40E0D0" BrushName="#40E0D0 Turquoise" />
+                        <cp:NamedBrush Brush="#FFEE82EE" BrushName="#EE82EE Violet" />
+                        <cp:NamedBrush Brush="#FFF5DEB3" BrushName="#F5DEB3 Wheat" />
+                        <cp:NamedBrush Brush="#FFFFFFFF" BrushName="#FFFFFF White" />
+                        <cp:NamedBrush Brush="#FFF5F5F5" BrushName="#F5F5F5 White Smoke" />
+                        <cp:NamedBrush Brush="#FFFFFF00" BrushName="#FFFF00 Yellow" />
+                        <cp:NamedBrush Brush="#FF9ACD32" BrushName="#9ACD32 Yellow Green" />
+                    </ComboBox>
+                    </StackPanel>
+                </Border>
+                <Border Width="100" Height="50">
+                    <Button Content="Create!" Margin="5 5 5 0" FontFamily="Maiandra GD" FontSize="20" 
+                            Click="Button_Click"/>
+                </Border>
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://comspex.com/lix/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://comspex.com/lix/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://comspex.com/lix/">
+      <s:element name="GenerateTestData">
+        <s:complexType />
+      </s:element>
+      <s:element name="GenerateTestDataResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddActivationSet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="data" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddActivationSetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddActivationSetResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActivationSet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActivationSetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetActivationSetResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CleanActivationCache">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CleanActivationCacheResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetBase64String">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="text" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBase64StringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBase64StringResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadActivationSets">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadActivationSetsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadActivationSetsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadActivationSets">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="data" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isMerged" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadActivationSetsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AlreadyRegistered">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AlreadyRegisteredResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AlreadyRegisteredResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EncryptSessionKeyByRSA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="text" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="keyToUse" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EncryptSessionKeyByRSAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EncryptSessionKeyByRSAResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DecryptSessionKeyByRSA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="text64" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DecryptSessionKeyByRSAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DecryptSessionKeyByRSAResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPublicKey">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetPublicKeyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPublicKeyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ParseLicenseKey">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="text64" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ParseLicenseKeyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ParseLicenseKeyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLicenseStateStrings">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetLicenseStateStringsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLicenseStateStringsResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GenerateTestDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GenerateTestData" />
+  </wsdl:message>
+  <wsdl:message name="GenerateTestDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GenerateTestDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddActivationSetSoapIn">
+    <wsdl:part name="parameters" element="tns:AddActivationSet" />
+  </wsdl:message>
+  <wsdl:message name="AddActivationSetSoapOut">
+    <wsdl:part name="parameters" element="tns:AddActivationSetResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetActivationSetSoapIn">
+    <wsdl:part name="parameters" element="tns:GetActivationSet" />
+  </wsdl:message>
+  <wsdl:message name="GetActivationSetSoapOut">
+    <wsdl:part name="parameters" element="tns:GetActivationSetResponse" />
+  </wsdl:message>
+  <wsdl:message name="CleanActivationCacheSoapIn">
+    <wsdl:part name="parameters" element="tns:CleanActivationCache" />
+  </wsdl:message>
+  <wsdl:message name="CleanActivationCacheSoapOut">
+    <wsdl:part name="parameters" element="tns:CleanActivationCacheResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBase64StringSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBase64String" />
+  </wsdl:message>
+  <wsdl:message name="GetBase64StringSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBase64StringResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadActivationSetsSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadActivationSets" />
+  </wsdl:message>
+  <wsdl:message name="DownloadActivationSetsSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadActivationSetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadActivationSetsSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadActivationSets" />
+  </wsdl:message>
+  <wsdl:message name="UploadActivationSetsSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadActivationSetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AlreadyRegisteredSoapIn">
+    <wsdl:part name="parameters" element="tns:AlreadyRegistered" />
+  </wsdl:message>
+  <wsdl:message name="AlreadyRegisteredSoapOut">
+    <wsdl:part name="parameters" element="tns:AlreadyRegisteredResponse" />
+  </wsdl:message>
+  <wsdl:message name="EncryptSessionKeyByRSASoapIn">
+    <wsdl:part name="parameters" element="tns:EncryptSessionKeyByRSA" />
+  </wsdl:message>
+  <wsdl:message name="EncryptSessionKeyByRSASoapOut">
+    <wsdl:part name="parameters" element="tns:EncryptSessionKeyByRSAResponse" />
+  </wsdl:message>
+  <wsdl:message name="DecryptSessionKeyByRSASoapIn">
+    <wsdl:part name="parameters" element="tns:DecryptSessionKeyByRSA" />
+  </wsdl:message>
+  <wsdl:message name="DecryptSessionKeyByRSASoapOut">
+    <wsdl:part name="parameters" element="tns:DecryptSessionKeyByRSAResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPublicKeySoapIn">
+    <wsdl:part name="parameters" element="tns:GetPublicKey" />
+  </wsdl:message>
+  <wsdl:message name="GetPublicKeySoapOut">
+    <wsdl:part name="parameters" element="tns:GetPublicKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ParseLicenseKeySoapIn">
+    <wsdl:part name="parameters" element="tns:ParseLicenseKey" />
+  </wsdl:message>
+  <wsdl:message name="ParseLicenseKeySoapOut">
+    <wsdl:part name="parameters" element="tns:ParseLicenseKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLicenseStateStringsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLicenseStateStrings" />
+  </wsdl:message>
+  <wsdl:message name="GetLicenseStateStringsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLicenseStateStringsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="LicenseServiceSoap">
+    <wsdl:operation name="GenerateTestData">
+      <wsdl:input message="tns:GenerateTestDataSoapIn" />
+      <wsdl:output message="tns:GenerateTestDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddActivationSet">
+      <wsdl:input message="tns:AddActivationSetSoapIn" />
+      <wsdl:output message="tns:AddActivationSetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActivationSet">
+      <wsdl:input message="tns:GetActivationSetSoapIn" />
+      <wsdl:output message="tns:GetActivationSetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CleanActivationCache">
+      <wsdl:input message="tns:CleanActivationCacheSoapIn" />
+      <wsdl:output message="tns:CleanActivationCacheSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBase64String">
+      <wsdl:input message="tns:GetBase64StringSoapIn" />
+      <wsdl:output message="tns:GetBase64StringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadActivationSets">
+      <wsdl:input message="tns:DownloadActivationSetsSoapIn" />
+      <wsdl:output message="tns:DownloadActivationSetsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadActivationSets">
+      <wsdl:input message="tns:UploadActivationSetsSoapIn" />
+      <wsdl:output message="tns:UploadActivationSetsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AlreadyRegistered">
+      <wsdl:input message="tns:AlreadyRegisteredSoapIn" />
+      <wsdl:output message="tns:AlreadyRegisteredSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EncryptSessionKeyByRSA">
+      <wsdl:input message="tns:EncryptSessionKeyByRSASoapIn" />
+      <wsdl:output message="tns:EncryptSessionKeyByRSASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DecryptSessionKeyByRSA">
+      <wsdl:input message="tns:DecryptSessionKeyByRSASoapIn" />
+      <wsdl:output message="tns:DecryptSessionKeyByRSASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicKey">
+      <wsdl:input message="tns:GetPublicKeySoapIn" />
+      <wsdl:output message="tns:GetPublicKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ParseLicenseKey">
+      <wsdl:input message="tns:ParseLicenseKeySoapIn" />
+      <wsdl:output message="tns:ParseLicenseKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLicenseStateStrings">
+      <wsdl:input message="tns:GetLicenseStateStringsSoapIn" />
+      <wsdl:output message="tns:GetLicenseStateStringsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LicenseServiceSoap" type="tns:LicenseServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GenerateTestData">
+      <soap:operation soapAction="http://comspex.com/lix/GenerateTestData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://comspex.com/lix/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddActivationSet">
+      <soap:operation soapAction="http://comspex.com/lix/AddActivationSet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActivationSet">
+      <soap:operation soapAction="http://comspex.com/lix/GetActivationSet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CleanActivationCache">
+      <soap:operation soapAction="http://comspex.com/lix/CleanActivationCache" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBase64String">
+      <soap:operation soapAction="http://comspex.com/lix/GetBase64String" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadActivationSets">
+      <soap:operation soapAction="http://comspex.com/lix/DownloadActivationSets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadActivationSets">
+      <soap:operation soapAction="http://comspex.com/lix/UploadActivationSets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AlreadyRegistered">
+      <soap:operation soapAction="http://comspex.com/lix/AlreadyRegistered" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EncryptSessionKeyByRSA">
+      <soap:operation soapAction="http://comspex.com/lix/EncryptSessionKeyByRSA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DecryptSessionKeyByRSA">
+      <soap:operation soapAction="http://comspex.com/lix/DecryptSessionKeyByRSA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicKey">
+      <soap:operation soapAction="http://comspex.com/lix/GetPublicKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ParseLicenseKey">
+      <soap:operation soapAction="http://comspex.com/lix/ParseLicenseKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLicenseStateStrings">
+      <soap:operation soapAction="http://comspex.com/lix/GetLicenseStateStrings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LicenseServiceSoap12" type="tns:LicenseServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GenerateTestData">
+      <soap12:operation soapAction="http://comspex.com/lix/GenerateTestData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://comspex.com/lix/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddActivationSet">
+      <soap12:operation soapAction="http://comspex.com/lix/AddActivationSet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActivationSet">
+      <soap12:operation soapAction="http://comspex.com/lix/GetActivationSet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CleanActivationCache">
+      <soap12:operation soapAction="http://comspex.com/lix/CleanActivationCache" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBase64String">
+      <soap12:operation soapAction="http://comspex.com/lix/GetBase64String" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadActivationSets">
+      <soap12:operation soapAction="http://comspex.com/lix/DownloadActivationSets" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadActivationSets">
+      <soap12:operation soapAction="http://comspex.com/lix/UploadActivationSets" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AlreadyRegistered">
+      <soap12:operation soapAction="http://comspex.com/lix/AlreadyRegistered" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EncryptSessionKeyByRSA">
+      <soap12:operation soapAction="http://comspex.com/lix/EncryptSessionKeyByRSA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DecryptSessionKeyByRSA">
+      <soap12:operation soapAction="http://comspex.com/lix/DecryptSessionKeyByRSA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicKey">
+      <soap12:operation soapAction="http://comspex.com/lix/GetPublicKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ParseLicenseKey">
+      <soap12:operation soapAction="http://comspex.com/lix/ParseLicenseKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLicenseStateStrings">
+      <soap12:operation soapAction="http://comspex.com/lix/GetLicenseStateStrings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LicenseService">
+    <wsdl:port name="LicenseServiceSoap" binding="tns:LicenseServiceSoap">
+      <soap:address location="http://comspex.com/lix/LicenseService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LicenseServiceSoap12" binding="tns:LicenseServiceSoap12">
+      <soap12:address location="http://comspex.com/lix/LicenseService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

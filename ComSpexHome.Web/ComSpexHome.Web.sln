@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComSpexHome.Web", "ComSpexHome.Web.csproj", "{1FE69270-1DD0-4B2E-9827-5B8BB0BF3A84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilverlightOne", "..\SilverlightOne\SilverlightOne.csproj", "{73640A1A-B499-4AC6-B007-DC204DDEDE18}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccProjectUniqueName0 = ComSpexHome.Web.csproj
+		SccProjectName0 = \u0022$/ComSpexHome.root/ComSpexHome/Visual\u0020Studio\u00202010/Projects/ComSpexHome/ComSpexHome.Web\u0022,\u0020TAAAAAAA
+		SccLocalPath0 = .
+		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		SccProjectUniqueName1 = ..\\SilverlightOne\\SilverlightOne.csproj
+		SccProjectName1 = \u0022$/ComSpexHome.root/ComSpexHome/Visual\u0020Studio\u00202010/Projects/ComSpexHome/SilverlightOne\u0022,\u0020DEAAAAAA
+		SccLocalPath1 = ..\\SilverlightOne
+		SccProvider1 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1FE69270-1DD0-4B2E-9827-5B8BB0BF3A84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FE69270-1DD0-4B2E-9827-5B8BB0BF3A84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FE69270-1DD0-4B2E-9827-5B8BB0BF3A84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FE69270-1DD0-4B2E-9827-5B8BB0BF3A84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73640A1A-B499-4AC6-B007-DC204DDEDE18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73640A1A-B499-4AC6-B007-DC204DDEDE18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73640A1A-B499-4AC6-B007-DC204DDEDE18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73640A1A-B499-4AC6-B007-DC204DDEDE18}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

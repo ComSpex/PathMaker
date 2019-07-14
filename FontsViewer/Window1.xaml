@@ -1,0 +1,102 @@
+﻿<!-- $Header: /SilverlightOne.root/SilverlightOne/Visual Studio 2010/Projects/SilverlightOne/FontsViewer/Window1.xaml 1     13/10/03 9:40 Yosuke $ -->
+	<Window x:Class="FontsViewer.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    Title="System Font Families" Width="960" Height="360"
+        Background="#eeeeee" PreviewKeyDown="Window_PreviewKeyDown">
+	<Window.Resources>
+		<sys:String x:Key="alphaUpper">ABCDEFGHIJKLMNOPQRSTUVWXYZ</sys:String>
+		<sys:String x:Key="alphaLower">abcdefghijklmnopqrstuvwxyz</sys:String>
+		<sys:String x:Key="numbers">0123456789</sys:String>
+		<sys:String x:Key="symbols">~!@#$%^&amp;*(')[]{}|_-/+=&lt;&gt;,.?\:;"</sys:String>
+		<sys:String x:Key="japanese">あいうえお日本語アイウエオ０１２３</sys:String>
+		<Style x:Key="fontBased" TargetType="{x:Type Border}">
+			<Setter Property="RenderTransformOrigin" Value="0.5 0.5" />
+			<Setter Property="BorderThickness" Value="1" />
+			<Setter Property="CornerRadius" Value="4.2426406871192851464050661726291" />
+			<Setter Property="Background" Value="White" />
+			<Setter Property="BorderBrush" Value="{x:Null}" />
+			<Setter Property="Cursor" Value="Hand" />
+		</Style>
+		<Style x:Key="fontOuter" TargetType="{x:Type Border}" BasedOn="{StaticResource fontBased}">
+			<Style.Triggers>
+				<Trigger Property="IsMouseOver" Value="true">
+					<Setter Property="BorderBrush" Value="Red" />
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+		<Style x:Key="fontInner" TargetType="{x:Type Border}" BasedOn="{StaticResource fontBased}">
+			<Setter Property="BorderBrush" Value="White" />
+			<Setter Property="BorderThickness" Value="2" />
+			<Setter Property="CornerRadius" Value="1.4142135623730950488016887242097" />
+		</Style>
+		<Style TargetType="{x:Type ListBoxItem}">
+			<Setter Property="BorderBrush" Value="Transparent" />
+			<Setter Property="BorderThickness" Value="1" />
+			<Style.Triggers>
+				<Trigger Property="IsMouseOver" Value="true">
+					<Setter Property="BorderBrush" Value="Red" />
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+		<LinearGradientBrush x:Key="cthruWhite" StartPoint="0 0" EndPoint="1 0">
+			<GradientStop Color="White" Offset="0" />
+			<GradientStop Color="Transparent" Offset="0.9" />
+		</LinearGradientBrush>
+	</Window.Resources>
+	
+	<Grid VerticalAlignment="Stretch">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="200" />
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
+		<!-- Left pane -->
+		<ListBox Grid.Column="0" x:Name="fontList" VerticalAlignment="Stretch"
+						 Margin="0 0 5 0"
+						 SelectionChanged="fontList_SelectionChanged"
+						 Cursor="Hand" />
+		<!-- Right pane -->
+		<Grid Grid.Column="1" VerticalAlignment="Stretch">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="24" />
+				<RowDefinition />
+				<RowDefinition Height="22" />
+			</Grid.RowDefinitions>
+			<TextBlock x:Name="samplet" Text="This is a sample text." Margin="2"
+								 VerticalAlignment="Center" MouseDown="samplet_MouseDown"
+								 Background="{StaticResource cthruWhite}"
+								 Cursor="Hand"/>
+			
+			<!-- Right main pane -->
+			<ScrollViewer x:Name="scroller" Grid.Row="1">
+				<UniformGrid x:Name="unifog" VirtualizingStackPanel.IsVirtualizing="True" />
+			</ScrollViewer>
+			
+			<StatusBar Grid.Row="2">
+				<StatusBarItem x:Name="statusText" />
+			</StatusBar>
+		</Grid>
+		
+		<GridSplitter Grid.Column ="0" Background="Blue" Width="4"
+                      HorizontalAlignment="Right" VerticalAlignment="Stretch"/>
+		
+		<Grid x:Name="specimenSelected"
+              Grid.ColumnSpan="2"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch">
+			<Viewbox x:Name="viewSpecimen" 
+							 Stretch="Uniform"
+							 MouseDown="Viewbox_MouseDown" KeyDown="Viewbox_KeyDown">
+				<Viewbox.ContextMenu>
+					<ContextMenu x:Name="popupMenu">
+						<MenuItem Header="Italic" Click="MenuItem_Click" x:Name="doItalic" />
+						<MenuItem Header="Bold" Click="MenuItem_Click" x:Name="doBold" />
+						<Separator />
+						<MenuItem Header="Clear" Click="MenuItem_Click" x:Name="doClear" IsEnabled="False" />
+					</ContextMenu>
+				</Viewbox.ContextMenu>
+			</Viewbox>
+		</Grid>
+	</Grid>
+</Window>
