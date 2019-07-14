@@ -5,9 +5,9 @@ VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PathMaker", "PathMaker\PathMaker.csproj", "{1C7F607C-ECBC-4B30-8ECA-3FB416DDF19F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FontsViewer", "FontsViewer\FontsViewer.csproj", "{DC6C66FC-E83E-4B74-82C9-A01DEC2ECF85}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutlinedText", "PathMaker\OutlinedText\OutlinedText.csproj", "{008DC332-1BB5-4CE3-9266-E121CC1427D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutlinedText", "OutlinedText\OutlinedText.csproj", "{008DC332-1BB5-4CE3-9266-E121CC1427D4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FontsViewer", "PathMaker\FontsViewer\FontsViewer.csproj", "{DC6C66FC-E83E-4B74-82C9-A01DEC2ECF85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{1C7F607C-ECBC-4B30-8ECA-3FB416DDF19F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C7F607C-ECBC-4B30-8ECA-3FB416DDF19F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C7F607C-ECBC-4B30-8ECA-3FB416DDF19F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DC6C66FC-E83E-4B74-82C9-A01DEC2ECF85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DC6C66FC-E83E-4B74-82C9-A01DEC2ECF85}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DC6C66FC-E83E-4B74-82C9-A01DEC2ECF85}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DC6C66FC-E83E-4B74-82C9-A01DEC2ECF85}.Release|Any CPU.Build.0 = Release|Any CPU
 		{008DC332-1BB5-4CE3-9266-E121CC1427D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{008DC332-1BB5-4CE3-9266-E121CC1427D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{008DC332-1BB5-4CE3-9266-E121CC1427D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{008DC332-1BB5-4CE3-9266-E121CC1427D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC6C66FC-E83E-4B74-82C9-A01DEC2ECF85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC6C66FC-E83E-4B74-82C9-A01DEC2ECF85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC6C66FC-E83E-4B74-82C9-A01DEC2ECF85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC6C66FC-E83E-4B74-82C9-A01DEC2ECF85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
